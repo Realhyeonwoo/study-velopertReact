@@ -10,4 +10,4 @@
 - include-media, open-color: Sass 라이브러리 (반응형 디자 색상 팔레트)<br/>
 - better-react-spinkit: 로딩 시 보여줄 컴포넌트<br/>
 - react-icons: SVG 형태의 리액트 컴포넌트 모음 라이브러리<br/>
-- moemnt: 날짜 관련 라이브러리<br/>
+- moment: 날짜 관련 라이브러리<br/>
