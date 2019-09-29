@@ -16,7 +16,7 @@ class PaletteContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  color: state.counter.get('color'),
+  color: state.counter.color,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import produce from 'immer';
 
 // 액션 타입
 const CHANGE_COLOR = 'counter/CHANGE_COLOR';
@@ -11,21 +11,26 @@ export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
 
 // 초기상태 정의
-const initialState = Map({
+const initialState = {
   color: 'red',
   number: 0,
-});
+};
 
 // 리듀서 작성
 export default function counter(state = initialState, action) {
   switch (action.type) {
     case CHANGE_COLOR:
-      return state.set('color', action.color);
+      return produce(state, draft => {
+        draft.color = action.color;
+      });
     case INCREMENT:
-      return state.update('number', number => number + 1);
+      return produce(state, draft => {
+        draft.number++;
+      });
     case DECREMENT:
-      return state.update('number', number => number - 1);
-
+      return produce(state, draft => {
+        draft.number--;
+      });
     default:
       return state;
   }

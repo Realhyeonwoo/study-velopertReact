@@ -24,3 +24,7 @@
 - Map(객체), List(배열) 등을 사용
 - state 값을 얻기 위하여 .get을 사용 (이 점은 불편함)
 - set / update 등으로 값을 변환
+
+## Immer.js 사용
+
+- produce 를 import 하여 draft를 사용하며 편리함
