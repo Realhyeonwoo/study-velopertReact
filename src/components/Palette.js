@@ -8,7 +8,7 @@ const PaletteItem = ({ color, active, onClick }) => {
     <div
       className={`PaletteItem ${active ? 'active' : ''}`}
       style={{ backgroundColor: color }}
-      onClick={onClick}
+      onClick={() => onClick(color)}
     />
   );
 };
@@ -19,7 +19,12 @@ const Palette = ({ selected, onSelect }) => {
       <h2>색깔을 골라골라</h2>
       <div className="colors">
         {colors.map(color => (
-          <PaletteItem color={color} key={color} active={selected === color} />
+          <PaletteItem
+            onClick={onSelect}
+            color={color}
+            key={color}
+            active={selected === color}
+          />
         ))}
       </div>
     </div>
