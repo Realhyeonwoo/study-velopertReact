@@ -1,9 +1,7 @@
 # study-velopertReact
 
-## branch order
+## code spliting
 
 <ol>
-    <li>React 기본개념 10편 </li>
-    <li>Styling 및 api연결 tutorial </li>
-    <li>Redux, immutable.js, immer.js </li>
+   
 </ol>
