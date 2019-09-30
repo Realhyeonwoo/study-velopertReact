@@ -1,76 +1,32 @@
-import React, { Component } from "react";
-import PhoneForm from "./components/PhoneForm";
-import PhoneInfoList from "./components/PhoneInfoList";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-class App extends Component {
-  id = 2;
-  state = {
-    information: [
-      {
-        id: 0,
-        name: "김민준",
-        phone: "010-0000-0000"
-      },
-      {
-        id: 1,
-        name: "홍길동",
-        phone: "010-0000-0001"
-      }
-    ],
-    keyword: ""
-  };
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Posts from "./routes/Posts";
+import MyPage from "./routes/MyPage";
+import Login from "./routes/Login";
+import Search from "./routes/Search";
+import Header from "./components/Header";
+import NoMatch from "./routes/NoMatch";
 
-  handleChange = e => {
-    this.setState({ keyword: e.target.value });
-  };
-
-  handleCreate = data => {
-    const { information } = this.state;
-    this.setState({
-      information: information.concat({ id: this.id++, ...data })
-    });
-  };
-  handleRemove = id => {
-    const { information } = this.state;
-    this.setState({
-      information: information.filter(info => info.id !== id)
-    });
-  };
-  handleUpdate = (id, data) => {
-    const { information } = this.state;
-    this.setState({
-      information: information.map(
-        info =>
-          id === info.id
-            ? { ...info, ...data } // 새 객체를 만들어서 기존의 값과 전달받은 data 을 덮어씀
-            : info // 기존의 값을 그대로 유지
-      )
-    });
-  };
-  render() {
-    const { information, keyword } = this.state;
-    const filterList = information.filter(
-      info => info.name.indexOf(keyword) !== -1
-    );
-
-    return (
+const App = () => {
+  return (
+    <Router>
       <div>
-        <PhoneForm onCreate={this.handleCreate} />
-        <p>
-          <input
-            placeholder="search"
-            onChange={this.handleChange}
-            value={keyword}
-          />
-        </p>
-        <PhoneInfoList
-          data={filterList}
-          onRemove={this.handleRemove}
-          onUpdate={this.handleUpdate}
-        />
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about/:username" component={About} />
+          <Route path="/posts" component={Posts} />
+          <Route path="/login" component={Login} />
+          <Route path="/me" component={MyPage} />
+          <Route path="/search" component={Search} />
+          <Route component={NoMatch} />
+        </Switch>
       </div>
-    );
-  }
-}
+    </Router>
+  );
+};
 
 export default App;

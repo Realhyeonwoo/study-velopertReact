@@ -1,9 +1,7 @@
 # study-velopertReact
 
-## branch order
+## react-router version 4.0
 
-<ol>
-    <li>React 기본개념 10편 </li>
-    <li>Styling 및 api연결 tutorial </li>
-    <li>Redux, immutable.js, immer.js </li>
-</ol>
+- yarn add react-router-dom
+- { BrowserRouter, Route, Switch, NavLink, Redirect, Link } from 'react-router-dom'
+- this.props.location / match / history
